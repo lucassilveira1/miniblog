@@ -51,7 +51,8 @@ export const useAuthentication = () => {
       } else if (error.message.includes("email-already")) {
         systemErrorMessage = "E-mail já cadastrado.";
       } else {
-        systemErrorMessage = "Ocorreu um erro, por favor tenta mais tarde.";
+        systemErrorMessage =
+          "Ocorreu um erro, por favor tente novamente mais tarde.";
       }
 
       setError(systemErrorMessage);
@@ -86,7 +87,8 @@ export const useAuthentication = () => {
       } else if (error.message.includes("wrong-password")) {
         systemErrorMessage = "Senha incorreta.";
       } else {
-        systemErrorMessage = "Ocorreu um erro, por favor tenta mais tarde.";
+        systemErrorMessage =
+          "Ocorreu um erro, por favor tente novamente mais tarde.";
       }
 
       console.log(systemErrorMessage);
