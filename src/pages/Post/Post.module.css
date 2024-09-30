@@ -2,8 +2,12 @@
     text-align: center;
 }
 
+.post_container img {
+    width: 50rem;
+}
+
 .post_container h3 {
-    margin-bottom: .2em;
+    margin-bottom: 0.2em;
 }
 
 .post_container .tags {
@@ -17,4 +21,10 @@
 
 .tags span {
     font-weight: bold;
+}
+
+@media (max-width: 850px) {
+    .post_container img {
+        width: 90vw;
+    }
 }

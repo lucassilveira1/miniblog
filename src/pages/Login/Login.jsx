@@ -2,75 +2,84 @@
 
 import styles from "./Login.module.css";
 import { NavLink } from "react-router-dom";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { useAuthentication } from "../../hooks/useAuthentication";
 
 const Login = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("")
+    const { login, error: authError, loading } = useAuthentication();
 
-  const {login, error: authError, loading} = useAuthentication();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    setError("");
+        setError("");
 
-    const user = {
-      email,
-      password
-    }
+        const user = {
+            email,
+            password,
+        };
 
-    const res = await login(user);
+        const res = await login(user);
 
-    console.log(res);
-  };
+        console.log(res);
+    };
 
-  useEffect(() => {
-    if(authError) {
-      setError(authError);
-    }
-  }, [authError])
+    useEffect(() => {
+        if (authError) {
+            setError(authError);
+        }
+    }, [authError]);
 
-  return (
-    <div className={styles.login}>
-        <h1>Entrar</h1>
-        <p>Faça o Login para utilizar o Sistema.</p>
-        <form onSubmit={handleSubmit}>
-          <label>
-            <span>E-mail:</span>
-            <input 
-              type="email" 
-              name="email" 
-              required 
-              placeholder="E-mail do usuário"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
+    return (
+        <div className={styles.login}>
+            <h1>Entrar</h1>
+            <p>Faça o Login para utilizar o Sistema.</p>
+            <div className="login_form">
+                <form onSubmit={handleSubmit}>
+                    <label>
+                        <span>E-mail:</span>
+                        <input
+                            type="email"
+                            name="email"
+                            required
+                            placeholder="E-mail do usuário"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </label>
 
-          <label>
-            <span>Senha:</span>
-            <input 
-              type="password" 
-              name="password" 
-              required 
-              placeholder="Insira sua senha."
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
+                    <label>
+                        <span>Senha:</span>
+                        <input
+                            type="password"
+                            name="password"
+                            required
+                            placeholder="Insira sua senha."
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </label>
 
-          {!loading && <button className="btn">Entrar</button>}
-          {loading && <button className="btn" disabled>
-            Aguarde...
-          </button>}
-          {error && <p className="error">{error}</p>}
-        </form>
-    </div>
-  )
-}
+                    {!loading && <button className="btn">Entrar</button>}
+                    {loading && (
+                        <button className="btn" disabled>
+                            Aguarde...
+                        </button>
+                    )}
+                    {error && <p className="error">{error}</p>}
+                    <p className="account">
+                        Não possui conta?{" "}
+                        <NavLink id="link" to="/register">
+                            Registre-se aqui!
+                        </NavLink>
+                    </p>
+                </form>
+            </div>
+        </div>
+    );
+};
 
-export default Login
+export default Login;

@@ -18,6 +18,10 @@
     width: 50%;
 }
 
+.search_form button {
+    width: 3.5rem;
+}
+
 .noposts {
     text-align: center;
 }
@@ -28,4 +32,14 @@
 
 .noposts a {
     padding: 10px 25px;
+}
+
+@media (max-width: 850px) {
+    .home h1 {
+        text-align: center;
+    }
+
+    .search_form input {
+        width: 15rem;
+    }
 }
