@@ -1,11 +1,25 @@
 .register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
+.register_form input {
+    width: 40rem;
+}
+
 .register p {
-    color: #AAA;
+    color: #aaa;
 }
 
 .conta {
     color: #000;
+}
+
+@media (max-width: 850px) {
+    .register_form input {
+        width: 20rem;
+    }
 }

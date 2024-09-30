@@ -1,4 +1,10 @@
 .create_post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.create_post {
     text-align: center;
 }
 
@@ -7,6 +13,27 @@
 }
 
 .create_post p {
-    color: #AAA;
+    color: #aaa;
     margin-bottom: 2em;
+}
+
+@media (max-width: 1285px) {
+    .create_post input,
+    textarea {
+        width: 40rem;
+    }
+}
+
+@media (max-width: 850px) {
+    .create_post input,
+    textarea {
+        width: 20rem;
+    }
+
+    .create_post {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }
